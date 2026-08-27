@@ -14,14 +14,15 @@ Every file is served as a plain HTTP GET — no login, no cookies:
 GET https://www.iemop.ph/market-data/<listing>/?md_file=<base64>
 ```
 
-The `md_file` parameter is the **Base64-encoded server path** of the file,
-e.g. `TVBSRVNFUlZFL01QX1JFU0VSVkVfMjAyNjA4MjUuY3N2` decodes to
-`MPRESERVE/MP_RESERVE_20260825.csv`.
+The `md_file` parameter is the **Base64-encoded full server path** of the file,
+e.g. `L3Zhci93d3cvaHRtbC93cC1jb250ZW50L3VwbG9hZHMvZG93bmxvYWRzL2RhdGEvTVBSRVNFUlZFL01QX1JFU0VSVkVfMjAyNjA4MjUuY3N2` decodes to
+`/var/www/html/wp-content/uploads/downloads/data/MPRESERVE/MP_RESERVE_20260825.csv`.
 
 **URL construction recipe (extractor core):**
 
 ```python
-server_path = f"{FAMILY_FOLDER}/{FILE_PREFIX}_{yyyymmdd}.csv"   # or _yyyymmddhhmm.zip
+BASE = "/var/www/html/wp-content/uploads/downloads/data"
+server_path = f"{BASE}/{FAMILY_FOLDER}/{FILE_PREFIX}_{yyyymmdd}.csv"   # or _yyyymmddhhmm.zip
 url = (f"https://www.iemop.ph/market-data/{listing}/"
        f"?md_file={base64.b64encode(server_path.encode()).decode()}")
 ```

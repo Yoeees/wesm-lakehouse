@@ -7,6 +7,7 @@ landing/
 *.pyc
 .pytest_cache/
 test/
+.playwright-mcp/
 
 # Keep test fixtures, ignore sample data CSVs elsewhere
 !tests/fixtures/
