@@ -1,7 +1,10 @@
 __pycache__/
 .venv/
 landing/
+*.zip
+*.csv
 .watermark.json
 .env
 *.pyc
 .pytest_cache/
+test/
