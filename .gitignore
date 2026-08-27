@@ -1,0 +1,7 @@
+__pycache__/
+.venv/
+landing/
+.watermark.json
+.env
+*.pyc
+.pytest_cache/
